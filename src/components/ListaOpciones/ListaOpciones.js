@@ -15,7 +15,7 @@ const ListaOpciones = (props) =>
         "Innovación y gestión"];
 
     return <div className = "lista-opciones">
-        <label for = {props.id}>Equipos</label>
+        <label htmlFor = {props.id}>Equipos</label>
         <select id = {props.id} placeholder = {props.placeholder}>
             {
                 equipos.map((equipo, index) => <option key = {index}>{equipo}</option>)
