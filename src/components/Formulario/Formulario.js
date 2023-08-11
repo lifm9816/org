@@ -9,6 +9,7 @@ const Formulario = () =>
     //cada que se llena la función del formulario
     const manejarEnvio = (evento) => 
     {
+        evento.preventDefault();
         console.log("Manejar envío", evento);
     }
 
