@@ -1,10 +1,23 @@
+import {useState} from "react"
 import "./MiOrg.css"
 
-const MiOrg = () =>
+const MiOrg = (props) =>
 {
+    //Estado - hooks
+    //useState
+    //useState()
+    //const [nombreVariable, funcionActualiza] = useState(valorInicial)
+    console.log(props)
+    const [mostrar, actualizarMostrar] = useState(true);
+    const manerjarClick = () =>
+    {
+        console.log("Mostrar/Ocultar elemento", !mostrar);
+        actualizarMostrar(!mostrar);
+    }
+
     return <section className = "orgSection">
         <h3 className = "title">Mi organización</h3>
-        <img src ="/img/boton_add.png" alt = "add" />
+        <img src ="/img/boton_add.png" alt = "add" onClick = {props.cambiarMostrar} />
     </section>
 }
 
