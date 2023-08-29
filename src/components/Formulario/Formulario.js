@@ -12,6 +12,9 @@ const Formulario = (props) =>
     const [equipo, actualizarEquipo] = useState("")
     //Función que evitará que la página se recarge
     //cada que se llena la función del formulario
+
+    const {registrarColaborador} = props
+
     const manejarEnvio = (evento) => 
     {
         evento.preventDefault();
@@ -22,7 +25,7 @@ const Formulario = (props) =>
             foto: foto,
             equipo: equipo
         }
-        console.log(datosAEnviar);
+        registrarColaborador(datosAEnviar)
     }
 
     return <section className = "formulario">
