@@ -3,33 +3,40 @@ import Colaborador from "../Colaborador"
 
 const Equipo = (props) =>
 {
-    /*Destructuración
-    const {titulo, fondo, destaques} = props.datos
+    //Destructuración
+    const {colorPrimario, colorSecundario, titulo} = props.datos
     
+    /*
     return <section className = "equipo" style = {{backgroundColor: fondo}}>
         <h3 style = {{borderColor: destaques}} >{titulo}</h3>
         <div className = "colaboradores"></div>
     </section>
     */
-    const fondo =
-    {
-        backgroundColor: props.datos.fondo,
+    const obj = {
+        backgroundColor: colorSecundario
     }
 
-    const destaques =
-    {
-        borderColor: props.datos.destaques
+    const estiloTitulo = {
+        borderColor: colorPrimario
     }
 
-    return <section className = "equipo" style = {fondo}>
-        <h3 style = {destaques} >{props.datos.titulo}</h3>
-        <div className = "colaboradores">
-            <Colaborador/>
-            <Colaborador />
-            <Colaborador />
-            <Colaborador />
-        </div>
-    </section>
+    const {colaboradores} = props;
+    console.log(colaboradores.length > 0)
+
+    return <>
+    { colaboradores.length > 0 &&
+        <section className = "equipo" style = {obj}>
+            <h3 style = {estiloTitulo} >{titulo}</h3>
+            <div className = "colaboradores">
+            {
+                colaboradores.map((colaborador, index) => <Colaborador 
+                datos = {colaborador}
+                key = {index}
+                colorPrimario = {colorPrimario} />)
+            }
+            </div>
+        </section>
+    }</>
 }
 
 export default Equipo

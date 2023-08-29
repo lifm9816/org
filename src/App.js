@@ -32,55 +32,65 @@ function App() {
   const equipos = [
     {
       titulo: "Programación",
-      fondo: "#D9F7E9",
-      destaques: "#57C278"
+      colorSecundario: "#D9F7E9",
+      colorPrimario: "#57C278"
     }, 
     {
       titulo: "Front End",
-      fondo: "#E8F8FF",
-      destaques: "#82CFFA"
+      colorSecundario: "#E8F8FF",
+      colorPrimario: "#82CFFA"
     }, 
     {
       titulo: "Data Science",
-      fondo: "#F0F8E2",
-      destaques: "#A6D157"
+      colorSecundario: "#F0F8E2",
+      colorPrimario: "#A6D157"
     }, 
     {
       titulo: "Devops",
-      fondo: "#FDE7E8",
-      destaques: "#E06B69"
+      colorSecundario: "#FDE7E8",
+      colorPrimario: "#E06B69"
     },
     {
       titulo: "UX y Diseño",
-      fondo: "#FAE9F5",
-      destaques: "#DB6EBF"
+      colorSecundario: "#FAE9F5",
+      colorPrimario: "#DB6EBF"
     },
     {
       titulo: "Móvil",
-      fondo: "#FFF5D9",
-      destaques: "#FFBA05"
+      colorSecundario: "#FFF5D9",
+      colorPrimario: "#FFBA05"
     },
     {
       titulo:"Innovación y gestión",
-      fondo: "#FFEEDF",
-      destaques: "#FF8A29"
+      colorSecundario: "#FFEEDF",
+      colorPrimario: "#FF8A29"
     }
   ];
  
   return (
     <div>
       <Header/>
-      { 
-        /*mostrarFormulario === true ? <Formulario equipos = {equipos.map((equipo)=> equipo.titulo)} /> : <></>*/
-        mostrarFormulario && <Formulario equipos = {equipos.map((equipo) => equipo.titulo)} 
-        registrarColaborador = {registrarColaborador}
+      
+      {        
+        /*mostrarFormulario === true ? <Formulario 
+          equipos = {equipos.map((equipo)=> equipo.titulo)} 
+          registrarColaborador={registrarColaborador}
+        /> : <></>*/
+      }  
+      {
+        mostrarFormulario && <Formulario 
+          equipos = {equipos.map((equipo) => equipo.titulo)}
+          registrarColaborador={registrarColaborador}
         />
       }  
       <MiOrg cambiarMostrar = {cambiarMostrar} />
       
       {
         equipos.map((equipo) => {
-          return <Equipo datos = {equipo} key = {equipo.titulo} />
+          return <Equipo 
+          datos = {equipo} 
+          key = {equipo.titulo} 
+          colaboradores = {colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}/>
         })
       }
 
