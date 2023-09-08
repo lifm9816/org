@@ -4,6 +4,7 @@ import Header from "./components/Header/Header.js"
 import Formulario from "./components/Formulario/Formulario.js"
 import MiOrg from "./components/MiOrg"
 import Equipo from "./components/Equipo/Equipo.js"
+import Footer from "./components/Footer/Footer.js"
 
 function App() {
 
@@ -94,6 +95,7 @@ function App() {
         })
       }
 
+      <Footer />
     </div>
   );
 }
