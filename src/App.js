@@ -9,7 +9,90 @@ import Footer from "./components/Footer/Footer.js"
 function App() {
 
   const [mostrarFormulario, actualizarMostrar] = useState(false);
-  const [colaboradores, actualizarColaboradores] = useState([])
+  const [colaboradores, actualizarColaboradores] = useState([
+  { 
+    equipo: "Programación",
+    foto: "https://github.com/lifm9816.png",
+    nombre: "Luis Martínez",
+    puesto: "Desarrollador Front End",
+  },
+  { 
+    equipo: "Front End",
+    foto: "https://github.com/lifm9816.png",
+    nombre: "Luis Martínez",
+    puesto: "Desarrollador Front End",
+  },
+  { 
+    equipo: "Data Sciense",
+    foto: "https://github.com/lifm9816.png",
+    nombre: "Luis Martínez",
+    puesto: "Desarrollador Front End",
+  },
+  { 
+    equipo: "Devops",
+    foto: "https://github.com/lifm9816.png",
+    nombre: "Luis Martínez",
+    puesto: "Desarrollador Front End",
+  },
+  { 
+    equipo: "UX y Diseño",
+    foto: "https://github.com/lifm9816.png",
+    nombre: "Luis Martínez",
+    puesto: "Desarrollador Front End",
+  },
+  { 
+    equipo: "Móvil",
+    foto: "https://github.com/lifm9816.png",
+    nombre: "Luis Martínez",
+    puesto: "Desarrollador Front End",
+  },
+  { 
+    equipo: "Innovación y gestión",
+    foto: "https://github.com/lifm9816.png",
+    nombre: "Luis Martínez",
+    puesto: "Desarrollador Front End",
+  }
+  ])
+
+  const [equipos, actualizarEquipo] = useState(
+    [
+      {
+        titulo: "Programación",
+        colorSecundario: "#D9F7E9",
+        colorPrimario: "#57C278"
+      }, 
+      {
+        titulo: "Front End",
+        colorSecundario: "#E8F8FF",
+        colorPrimario: "#82CFFA"
+      }, 
+      {
+        titulo: "Data Science",
+        colorSecundario: "#F0F8E2",
+        colorPrimario: "#A6D157"
+      }, 
+      {
+        titulo: "Devops",
+        colorSecundario: "#FDE7E8",
+        colorPrimario: "#E06B69"
+      },
+      {
+        titulo: "UX y Diseño",
+        colorSecundario: "#FAE9F5",
+        colorPrimario: "#DB6EBF"
+      },
+      {
+        titulo: "Móvil",
+        colorSecundario: "#FFF5D9",
+        colorPrimario: "#FFBA05"
+      },
+      {
+        titulo:"Innovación y gestión",
+        colorSecundario: "#FFEEDF",
+        colorPrimario: "#FF8A29"
+      }
+    ]
+  )
 
   //? = Si es verdadero
   //: = Si no es verdadero
@@ -29,44 +112,26 @@ function App() {
     actualizarColaboradores([...colaboradores, colaborador])
   }
 
-  //Lista de equipos
-  const equipos = [
+  //Eliminar colaborador
+  const eliminarColaborador = () =>
+  {
+    console.log("Eliminar colaborador");
+  }
+
+  //Actualizar color de equipo
+  const actualizarColor = (color, titulo) =>
+  {
+    console.log("Actualizar: ", color, titulo);
+    const equiposActualizados = equipos.map((equipo) =>
     {
-      titulo: "Programación",
-      colorSecundario: "#D9F7E9",
-      colorPrimario: "#57C278"
-    }, 
-    {
-      titulo: "Front End",
-      colorSecundario: "#E8F8FF",
-      colorPrimario: "#82CFFA"
-    }, 
-    {
-      titulo: "Data Science",
-      colorSecundario: "#F0F8E2",
-      colorPrimario: "#A6D157"
-    }, 
-    {
-      titulo: "Devops",
-      colorSecundario: "#FDE7E8",
-      colorPrimario: "#E06B69"
-    },
-    {
-      titulo: "UX y Diseño",
-      colorSecundario: "#FAE9F5",
-      colorPrimario: "#DB6EBF"
-    },
-    {
-      titulo: "Móvil",
-      colorSecundario: "#FFF5D9",
-      colorPrimario: "#FFBA05"
-    },
-    {
-      titulo:"Innovación y gestión",
-      colorSecundario: "#FFEEDF",
-      colorPrimario: "#FF8A29"
-    }
-  ];
+      if(equipo.titulo === titulo)
+      {
+        equipo.colorPrimario = color
+      }
+      return equipo
+    })
+    actualizarEquipo(equiposActualizados);
+  }
  
   return (
     <div>
@@ -91,7 +156,9 @@ function App() {
           return <Equipo 
           datos = {equipo} 
           key = {equipo.titulo} 
-          colaboradores = {colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}/>
+          colaboradores = {colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
+          eliminarColaborador = {eliminarColaborador}
+          actualizarColor = {actualizarColor} />
         })
       }
 
