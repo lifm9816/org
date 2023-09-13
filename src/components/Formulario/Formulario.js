@@ -13,10 +13,11 @@ const Formulario = (props) =>
     const [equipo, actualizarEquipo] = useState("");
     const [titulo, actualizarTitulo] = useState("");
     const [color, actualizarColor] = useState("");
+
+    const {registrarColaborador, crearEquipo} = props
+
     //Función que evitará que la página se recarge
     //cada que se llena la función del formulario
-
-    const {registrarColaborador} = props
 
     const manejarEnvio = (evento) => 
     {
@@ -29,6 +30,12 @@ const Formulario = (props) =>
             equipo: equipo
         }
         registrarColaborador(datosAEnviar)
+    }
+
+    const manejarNuevoEquipo = (e) =>
+    {
+        e.preventDefault();
+        crearEquipo({titulo, colorPrimario: color});
     }
 
     return <section className = "formulario">
@@ -64,7 +71,7 @@ const Formulario = (props) =>
                 equipos = {props.equipos} />
             <Boton texto = "Crear"/>
         </form>
-        <form onSubmit = {manejarEnvio}>
+        <form onSubmit = {manejarNuevoEquipo}>
             <h2>Rellena el formulario para crear el equipo</h2>
             <CampoTexto 
                 id = "titulo" 
@@ -79,6 +86,7 @@ const Formulario = (props) =>
                 valor = {color}
                 actualizarValor = {actualizarColor}
                  />
+            <Boton texto = "Crear equipo" />
         </form>
     </section>
 }
