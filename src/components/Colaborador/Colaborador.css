@@ -51,3 +51,10 @@
     cursor: pointer;
     color: #FFFFFF;
 }
+
+.info .like
+{
+    cursor: pointer;
+    font-size: 25px;
+    margin-top: 10px;
+}

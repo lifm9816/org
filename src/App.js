@@ -17,6 +17,7 @@ function App() {
     foto: "https://github.com/lifm9816.png",
     nombre: "Luis Martínez",
     puesto: "Desarrollador Front End",
+    fav: true,
   },
   { 
     id: uuid(),
@@ -24,6 +25,7 @@ function App() {
     foto: "https://github.com/lifm9816.png",
     nombre: "Luis Martínez",
     puesto: "Desarrollador Front End",
+    fav: true,
   },
   { 
     id: uuid(),
@@ -31,6 +33,7 @@ function App() {
     foto: "https://github.com/lifm9816.png",
     nombre: "Luis Martínez",
     puesto: "Desarrollador Front End",
+    fav: true,
   },
   { 
     id: uuid(),
@@ -38,6 +41,7 @@ function App() {
     foto: "https://github.com/lifm9816.png",
     nombre: "Luis Martínez",
     puesto: "Desarrollador Front End",
+    fav:true
   },
   { 
     id: uuid(),
@@ -45,6 +49,7 @@ function App() {
     foto: "https://github.com/lifm9816.png",
     nombre: "Luis Martínez",
     puesto: "Desarrollador Front End",
+    fav:false
   },
   { 
     id: uuid(),
@@ -52,12 +57,15 @@ function App() {
     foto: "https://github.com/lifm9816.png",
     nombre: "Luis Martínez",
     puesto: "Desarrollador Front End",
+    fav: true
   },
   { 
+    id: uuid(),
     equipo: "Innovación y gestión",
     foto: "https://github.com/lifm9816.png",
     nombre: "Luis Martínez",
     puesto: "Desarrollador Front End",
+    fav: true,
   }
   ])
 
@@ -123,7 +131,7 @@ function App() {
   {
     console.log("Nuevo colaborador", colaborador)
     //Spread Operator: Crear una copia de los valores actuales
-    actualizarColaboradores([...colaboradores, colaborador])
+    actualizarColaboradores([...colaboradores, {...colaborador, id: uuid()}])
   }
 
   //Eliminar colaborador
@@ -155,6 +163,21 @@ function App() {
     console.log(nuevoEquipo);
     actualizarEquipo([...equipos, {...nuevoEquipo, id: uuid()}])
   }
+
+  //Función para indicar colaborador favorito
+  const like = (id) =>
+  {
+    console.log("like", id);
+    const colaboradoresActualizados = colaboradores.map((colaborador) =>
+    {
+      if(colaborador.id === id)
+      {
+        colaborador.fav = !colaborador.fav;
+      }
+      return colaborador;
+    });
+    actualizarColaboradores(colaboradoresActualizados);
+  }
  
   return (
     <div>
@@ -182,7 +205,8 @@ function App() {
           key = {equipo.titulo} 
           colaboradores = {colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
           eliminarColaborador = {eliminarColaborador}
-          actualizarColor = {actualizarColor} />
+          actualizarColor = {actualizarColor}
+          like = {like} />
         })
       }
 

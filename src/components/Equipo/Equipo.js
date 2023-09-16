@@ -21,7 +21,7 @@ const Equipo = (props) =>
         borderColor: colorPrimario
     }
 
-    const {colaboradores, eliminarColaborador, actualizarColor} = props;
+    const {colaboradores, eliminarColaborador, actualizarColor, like} = props;
 
     return <>
     { colaboradores.length > 0 &&
@@ -42,7 +42,8 @@ const Equipo = (props) =>
                 key = {index}
                 colorPrimario = {colorPrimario}
                 colorSecundario = {colorSecundario}
-                eliminarColaborador = {eliminarColaborador} />)
+                eliminarColaborador = {eliminarColaborador}
+                like = {like} />)
             }
             </div>
         </section>
